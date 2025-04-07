@@ -1,0 +1,429 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    height: 100vh;
+    overflow: hidden;
+    perspective: 1000px;
+}
+
+.app-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.top-bar {
+    height: 40px;
+    background: rgba(45, 45, 45, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    cursor: move;
+    position: relative;
+    z-index: 1000;
+}
+
+.title {
+    font-size: 18px;
+    color: white;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.controls {
+    display: flex;
+    gap: 8px;
+}
+
+.controls button {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.controls button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.minimize {
+    background: #808080;
+}
+
+.maximize {
+    background: #808080;
+}
+
+.close {
+    background: #ff4444;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.chat-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 12px 18px;
+    border-radius: 20px;
+    max-width: 70%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.user-message {
+    background: rgba(74, 144, 226, 0.2);
+    align-self: flex-end;
+}
+
+.assistant-message {
+    background: rgba(51, 51, 51, 0.2);
+    align-self: flex-start;
+}
+
+.jarvis-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.jarvis-3d {
+    position: relative;
+    width: 100px;
+    height: 200px;
+    transform-style: preserve-3d;
+    animation: rotateY 10s infinite linear;
+}
+
+@keyframes rotateY {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+.jarvis-head {
+    position: absolute;
+    width: 100%;
+    height: 40%;
+    background: rgba(74, 144, 226, 0.3);
+    border-radius: 50% 50% 0 0;
+    box-shadow: 0 2px 10px rgba(74, 144, 226, 0.2);
+}
+
+.jarvis-body {
+    position: absolute;
+    width: 80%;
+    height: 40%;
+    top: 40%;
+    left: 10%;
+    background: rgba(51, 51, 51, 0.3);
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 2px 10px rgba(51, 51, 51, 0.2);
+}
+
+.jarvis-base {
+    position: absolute;
+    width: 60%;
+    height: 20%;
+    top: 80%;
+    left: 20%;
+    background: rgba(74, 144, 226, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(74, 144, 226, 0.2);
+}
+
+.jarvis-gif-container {
+    position: relative;
+    width: 480px;
+    height: 270px;
+    background: rgba(45, 45, 45, 0.8);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+#jarvisGif {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    max-width: 100%;
+    max-height: 100%;
+    transform: scale(1.1);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1.1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1.1); }
+}
+
+.jarvis-lights {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.jarvis-lights::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(74, 144, 226, 0.8);
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(74, 144, 226, 0.5);
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+.controls-section {
+    display: flex;
+    gap: 20px;
+    padding-top: 20px;
+    align-items: center;
+}
+
+.mic-button {
+    width: 80px;
+    height: 80px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(51, 51, 51, 0.8);
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.mic-3d {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: rotateX 5s infinite linear;
+}
+
+@keyframes rotateX {
+    from {
+        transform: rotateX(0deg);
+    }
+    to {
+        transform: rotateX(360deg);
+    }
+}
+
+.mic-top {
+    position: absolute;
+    width: 60%;
+    height: 20%;
+    top: 10%;
+    left: 20%;
+    background: rgba(74, 144, 226, 0.3);
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(74, 144, 226, 0.2);
+}
+
+.mic-middle {
+    position: absolute;
+    width: 80%;
+    height: 40%;
+    top: 30%;
+    left: 10%;
+    background: rgba(51, 51, 51, 0.3);
+    border-radius: 40% 40% 0 0;
+    box-shadow: 0 2px 10px rgba(51, 51, 51, 0.2);
+}
+
+.mic-bottom {
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    bottom: 0;
+    background: rgba(74, 144, 226, 0.3);
+    border-radius: 0 0 50% 50%;
+    box-shadow: 0 2px 10px rgba(74, 144, 226, 0.2);
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #444;
+    animation: pulse 2s infinite;
+}
+
+.status-indicator.active {
+    background: #4CAF50;
+    animation: none;
+}
+
+.function-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.function-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(51, 51, 51, 0.8);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.function-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.function-btn i {
+    font-size: 18px;
+    color: #fff;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close-modal {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #4CAF50;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarvis AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <div class="top-bar">
+            <div class="title">Jarvis AI</div>
+            <div class="controls">
+                <button class="minimize">-</button>
+                <button class="maximize">□</button>
+                <button class="close">×</button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="chat-section">
+                <div class="chat-messages" id="chatMessages"></div>
+                
+                <div class="jarvis-container">
+                    <div class="jarvis-3d">
+                        <div class="jarvis-head"></div>
+                        <div class="jarvis-body"></div>
+                        <div class="jarvis-base"></div>
+                    </div>
+                    <div class="jarvis-gif-container">
+                        <img src="../Graphics/Jarvis.gif" alt="Jarvis" id="jarvisGif">
+                        <div class="jarvis-lights"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls-section">
+                <button class="mic-button" id="micButton">
+                    <div class="mic-3d">
+                        <div class="mic-top"></div>
+                        <div class="mic-middle"></div>
+                        <div class="mic-bottom"></div>
+                    </div>
+                </button>
+                
+                <div class="status-indicator" id="statusIndicator"></div>
+                
+                <div class="function-buttons">
+                    <button class="function-btn" id="voiceBtn">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                    <button class="function-btn" id="searchBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="function-btn" id="youtubeBtn">
+                        <i class="fab fa-youtube"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="searchModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <input type="text" id="searchInput" placeholder="Search the web...">
+            <button id="searchSubmit">Search</button>
+        </div>
+    </div>
+
+    <div class="modal" id="youtubeModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <input type="text" id="youtubeInput" placeholder="Search YouTube...">
+            <button id="youtubeSubmit">Search</button>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
